@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   description:
     "Claim your digital achievement badge recorded immutably on the Botchain Testnet.",
   keywords: ["ChainBadge", "Web3", "Botchain", "Achievement", "Blockchain"],
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
