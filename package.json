@@ -9,7 +9,8 @@
     "start": "next start",
     "compile": "hardhat --config hardhat.config.cjs compile",
     "test": "hardhat --config hardhat.config.cjs test",
-    "deploy:botchain": "hardhat --config hardhat.config.cjs run scripts/deploy.cjs --network botchain"
+    "deploy:botchain": "hardhat --config hardhat.config.cjs run scripts/deploy.cjs --network botchain",
+    "verify:botchain": "hardhat --config hardhat.config.cjs verify --network botchain"
   },
   "keywords": [],
   "author": "",

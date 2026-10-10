@@ -20,4 +20,22 @@ module.exports = {
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
     },
   },
+  etherscan: {
+    apiKey: {
+      botchain: "abc",
+    },
+    customChains: [
+      {
+        network: "botchain",
+        chainId: 968,
+        urls: {
+          apiURL: "https://scan.bohr.life/api",
+          browserURL: "https://scan.bohr.life",
+        },
+      },
+    ],
+  },
+  sourcify: {
+    enabled: false,
+  },
 };
