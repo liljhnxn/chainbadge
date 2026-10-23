@@ -109,6 +109,6 @@ export const CHAINBADGE_ABI = [
   },
 ] as const;
 
-export const CHAINBADGE_CONTRACT_ADDRESS = (process.env
-  .NEXT_PUBLIC_CONTRACT_ADDRESS ||
-  "") as `0x${string}`;
+// Official Botchain Mainnet Deployed & Verified ChainBadge Contract (Chain ID: 677)
+export const CHAINBADGE_CONTRACT_ADDRESS =
+  "0x84d6E3ba396939cE921607a15E5e058E29935A59" as `0x${string}`;
