@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChainBadge — Whitepaper & Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b10;
+      --card-bg: #111522;
+      --border: #1e2638;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --accent: #10b981;
+      --code-bg: #0d1117;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --primary: #2563eb;
+        --primary-light: #1d4ed8;
+        --accent: #059669;
+        --code-bg: #f1f5f9;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+    @media print {
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+      }
+      .container {
+        border: none;
+        box-shadow: none;
+        padding: 20px;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--primary-light);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .metadata-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      background: var(--code-bg);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .metadata-item strong {
+      color: var(--primary-light);
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.15s ease;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+    .btn-secondary {
+      background: var(--code-bg);
+      color: var(--text);
+    }
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+      color: var(--primary-light);
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: #38bdf8;
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background: var(--code-bg);
+      color: var(--primary-light);
+    }
+    .slide-card {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+    }
+    .slide-num {
+      color: var(--primary-light);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Official Documentation</div>
+      <h1>ChainBadge 🛡️</h1>
+      <p class="subtitle">Decentralized Achievement Attestation & Sovereign On-Chain Identity on Botchain</p>
+
+      <div class="metadata-grid">
+        <div class="metadata-item">
+          <strong>Network</strong>
+          Botchain Mainnet (Chain ID: 677)
+        </div>
+        <div class="metadata-item">
+          <strong>Contract</strong>
+          0x84d6E3ba396939cE921607a15E5e058E29935A59
+        </div>
+        <div class="metadata-item">
+          <strong>Explorer</strong>
+          <a href="https://scan.botchain.ai/address/0x84d6E3ba396939cE921607a15E5e058E29935A59" target="_blank" style="color: #60a5fa;">View on BotchainScan</a>
+        </div>
+        <div class="metadata-item">
+          <strong>Repository</strong>
+          <a href="https://github.com/liljhnxn/chainbadge" target="_blank" style="color: #60a5fa;">github.com/liljhnxn/chainbadge</a>
+        </div>
+      </div>
+
+      <div class="actions no-print">
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        <a class="btn btn-secondary" href="https://github.com/liljhnxn/chainbadge" target="_blank">🌐 GitHub Repository</a>
+        <a class="btn btn-secondary" href="https://scan.botchain.ai/address/0x84d6E3ba396939cE921607a15E5e058E29935A59" target="_blank">🔍 BotchainScan Contract</a>
+      </div>
+    </header>
+
+    <!-- SECTION 1: WHITEPAPER -->
+    <section id="whitepaper">
+      <h2>Part 1: Whitepaper Summary</h2>
+
+      <h3>1. Executive Summary</h3>
+      <p>
+        <strong>ChainBadge</strong> is an ultra-lightweight, gas-optimized on-chain digital credential registry deployed natively on the <strong>Botchain</strong> blockchain. Designed to recognize early adopters and active participants, ChainBadge permanently records the <strong>"Early Achiever"</strong> milestone directly onto the blockchain ledger.
+      </p>
+
+      <h3>2. Key Architectural Advantages</h3>
+      <ul>
+        <li><strong>Strict Single-Claim Enforcement</strong>: Each wallet address can claim the achievement badge only once. Duplicate claims are permanently rejected at the EVM opcode level.</li>
+        <li><strong>Zero Centralized Dependencies</strong>: Completely eliminated databases, centralized server APIs, and off-chain storage providers. All state reads and writes occur directly against the smart contract.</li>
+        <li><strong>On-Chain Timestamp Attestation</strong>: Precise block timestamps are permanently bound to the claimant address, providing indisputable cryptographic proof of early adoption.</li>
+        <li><strong>Composability for Botchain DAOs</strong>: External smart contracts and decentralized protocols can query <code>hasClaimed(address)</code> with single-slot O(1) gas cost for airdrop whitelisting and role gating.</li>
+      </ul>
+
+      <h3>3. Technical Specifications</h3>
+      <table>
+        <tr>
+          <th>Specification</th>
+          <th>Implementation Detail</th>
+        </tr>
+        <tr>
+          <td>Smart Contract</td>
+          <td><code>ChainBadge.sol</code> (Solidity 0.8.20 with optimizer)</td>
+        </tr>
+        <tr>
+          <td>State Struct</td>
+          <td><code>ClaimRecord { bool hasClaimed; uint256 timestamp; }</code></td>
+        </tr>
+        <tr>
+          <td>Primary Interface</td>
+          <td><code>claimBadge()</code>, <code>hasClaimed(address)</code>, <code>getClaim(address)</code></td>
+        </tr>
+        <tr>
+          <td>Frontend Stack</td>
+          <td>Next.js 16 App Router, TypeScript, Wagmi v3, Viem v2, TanStack Query, Tailwind CSS</td>
+        </tr>
+        <tr>
+          <td>Security & Verification</td>
+          <td>100% test pass rate (7/7 tests in Hardhat), zero admin backdoors, reentrancy safe</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- SECTION 2: PITCH DECK -->
+    <section id="pitch-deck" style="margin-top: 48px;">
+      <h2>Part 2: Pitch Deck (10 Slides)</h2>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 1 • Vision</span>
+        <h3>Sovereign Achievement on Botchain</h3>
+        <p>A decentralized, gas-minimal protocol turning ecosystem milestones into immutable on-chain proof.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 2 • Problem</span>
+        <h3>Fragile Web2 Credentialing & Speculative Badges</h3>
+        <p>Off-chain Discord roles and database records are easily wiped or manipulated. Meanwhile, tradable NFT badges lead to secondary market speculation rather than authentic proof-of-loyalty.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 3 • Solution</span>
+        <h3>ChainBadge Protocol</h3>
+        <p>A non-transferable, tamper-proof, single-claim registry permanently recording the "Early Achiever" badge directly on Botchain Mainnet.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 4 • Product Workflow</span>
+        <h3>Frictionless Web3 UX</h3>
+        <p>Connect Web3 wallet ➔ Auto-switch to Botchain (Chain ID: 677) ➔ Instant RPC state check ➔ One-click badge claim ➔ Direct link to BotchainScan transaction confirmation.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 5 • Technical Architecture</span>
+        <h3>EVM-Optimized Contract & Modern Frontend</h3>
+        <p>Gas-optimized Solidity 0.8.20 paired with Next.js 16, Wagmi v3, and Viem v2 for reactive block-level UI updates.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 6 • Live Deployment</span>
+        <h3>Fully Deployed & Live on Mainnet</h3>
+        <p>Live on Botchain Mainnet at <code>0x84d6E3ba396939cE921607a15E5e058E29935A59</code> with live block explorer verification.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 7 • Security & Reliability</span>
+        <h3>Zero Backdoors & 100% Test Coverage</h3>
+        <p>Hardhat test suite with 7 exhaustive tests covering duplicate prevention, zero-address guards, and block timestamp accuracy.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 8 • Ecosystem Use Cases</span>
+        <h3>Airdrop Gating & Community Roles</h3>
+        <p>Provides native Sybil-resistance for upcoming Botchain DAOs, dApps, and Discord communities through Guild.xyz and Collab.Land integrations.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 9 • Roadmap</span>
+        <h3>From Mainnet Launch to ERC-5192 Soulbound Tokens</h3>
+        <p>Expanding to multi-tier dynamic achievements and ERC-5192 Soulbound Token standards across the Botchain ecosystem.</p>
+      </div>
+
+      <div class="slide-card">
+        <span class="slide-num">Slide 10 • Team & Resources</span>
+        <h3>Open Source & Community Driven</h3>
+        <p>Repository: <a href="https://github.com/liljhnxn/chainbadge" style="color:#60a5fa;">https://github.com/liljhnxn/chainbadge</a> • Deployed by liljhnxn.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>ChainBadge Protocol © 2026 • Built for the Botchain Ecosystem • All Rights Reserved</p>
+    </footer>
+  </div>
+</body>
+</html>

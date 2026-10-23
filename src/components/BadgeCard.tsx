@@ -10,7 +10,7 @@ import {
   useSwitchChain,
 } from "wagmi";
 import { CHAINBADGE_ABI, CHAINBADGE_CONTRACT_ADDRESS } from "@/config/contract";
-import { botchainTestnet } from "@/config/chain";
+import { botchainMainnet } from "@/config/chain";
 import {
   Award,
   CheckCircle2,
@@ -34,7 +34,7 @@ export function BadgeCard() {
     CHAINBADGE_CONTRACT_ADDRESS.length === 42 &&
     CHAINBADGE_CONTRACT_ADDRESS !== "0x0000000000000000000000000000000000000000";
 
-  const isWrongNetwork = isConnected && chain?.id !== botchainTestnet.id;
+  const isWrongNetwork = isConnected && chain?.id !== botchainMainnet.id;
 
   // Read claim status for connected wallet
   const {
@@ -128,7 +128,7 @@ export function BadgeCard() {
       return "Badge already claimed by this wallet.";
     }
     if (msg.includes("insufficient funds")) {
-      return "Insufficient BOT funds to cover transaction gas on Botchain Testnet.";
+      return "Insufficient BOT funds to cover transaction gas on Botchain Mainnet.";
     }
     return msg.length > 120 ? `${msg.slice(0, 120)}...` : msg;
   };
@@ -144,7 +144,7 @@ export function BadgeCard() {
               Contract Address Not Configured
             </p>
             <p className="text-xs text-amber-200/80 mt-1 leading-relaxed">
-              Deploy the contract to Botchain Testnet using Hardhat, then set{" "}
+              Deploy the contract to Botchain Mainnet using Hardhat, then set{" "}
               <code className="px-1.5 py-0.5 rounded bg-amber-950/80 border border-amber-800 text-amber-300">
                 NEXT_PUBLIC_CONTRACT_ADDRESS
               </code>{" "}
@@ -192,6 +192,27 @@ export function BadgeCard() {
             Awarded to early pioneers of the Botchain ecosystem. Verified and
             recorded forever on the blockchain ledger.
           </p>
+
+          {/* Mainnet Explorer Contract Link */}
+          {isContractConfigured && (
+            <div className="mt-3">
+              <a
+                id="mainnet-explorer-contract-btn"
+                href={`https://scan.botchain.ai/address/${CHAINBADGE_CONTRACT_ADDRESS}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-400 bg-emerald-950/40 border border-emerald-800/60 hover:bg-emerald-900/40 hover:text-emerald-300 transition shadow-sm"
+              >
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  className="h-3.5 w-3.5 object-contain rounded"
+                />
+                <span>Verified on Botchain Mainnet Explorer</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Divider */}
@@ -220,14 +241,14 @@ export function BadgeCard() {
             <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-center">
               <p className="text-sm text-amber-200 mb-3">
                 Your wallet is connected to an unsupported network. Please switch
-                to Botchain Testnet (Chain ID: 968).
+                to Botchain Mainnet (Chain ID: 677).
               </p>
               <button
                 id="card-switch-network-btn"
-                onClick={() => switchChain({ chainId: botchainTestnet.id })}
+                onClick={() => switchChain({ chainId: botchainMainnet.id })}
                 className="w-full py-3 px-4 rounded-xl font-semibold text-sm text-amber-950 bg-amber-400 hover:bg-amber-300 transition shadow-md flex items-center justify-center space-x-2"
               >
-                <span>Switch to Botchain Testnet</span>
+                <span>Switch to Botchain Mainnet</span>
               </button>
             </div>
           ) : isCheckingClaim ? (
@@ -267,12 +288,17 @@ export function BadgeCard() {
               <div className="pt-1">
                 <a
                   id="explorer-address-link"
-                  href={`https://scan.bohr.life/address/${address}`}
+                  href={`https://scan.botchain.ai/address/${address}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-sky-400 bg-sky-950/60 border border-sky-800/60 hover:bg-sky-900/50 hover:border-sky-700 transition"
+                  className="w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-emerald-400 bg-emerald-950/50 border border-emerald-800/60 hover:bg-emerald-900/50 hover:border-emerald-700 transition"
                 >
-                  <span>View Claimant on BohrScan Explorer</span>
+                  <img
+                    src="/botchain-logo.png"
+                    alt="BOT Chain"
+                    className="h-3.5 w-3.5 object-contain rounded"
+                  />
+                  <span>View Claimant on Botchain Explorer</span>
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               </div>
@@ -336,12 +362,17 @@ export function BadgeCard() {
               </p>
               <a
                 id="explorer-tx-link"
-                href={`https://scan.bohr.life/tx/${txHash}`}
+                href={`https://scan.botchain.ai/tx/${txHash}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1.5 text-sky-400 hover:text-sky-300 font-medium underline underline-offset-2"
+                className="inline-flex items-center space-x-1.5 text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2"
               >
-                <span>View Transaction on Explorer</span>
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain"
+                  className="h-3.5 w-3.5 object-contain rounded"
+                />
+                <span>View Transaction on BOT Chain Explorer</span>
                 <ExternalLink className="h-3 w-3" />
               </a>
             </div>

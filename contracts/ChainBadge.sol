@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 /**
  * @title ChainBadge
- * @dev Simple on-chain achievement badge registry on Botchain Testnet.
+ * @dev Simple on-chain achievement badge registry on Botchain Mainnet.
  * Each wallet address can claim the "Early Achiever" badge only once.
  */
 contract ChainBadge {

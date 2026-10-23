@@ -5,7 +5,7 @@ import { Providers } from "./providers";
 export const metadata: Metadata = {
   title: "ChainBadge | On-Chain Achievement Registry",
   description:
-    "Claim your digital achievement badge recorded immutably on the Botchain Testnet.",
+    "Claim your digital achievement badge recorded immutably on Botchain Mainnet.",
   keywords: ["ChainBadge", "Web3", "Botchain", "Achievement", "Blockchain"],
   icons: {
     icon: "/icon.svg",
